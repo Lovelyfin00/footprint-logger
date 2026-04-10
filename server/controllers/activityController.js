@@ -64,10 +64,6 @@ const deleteActivity = async (req, res) => {
   }
 }
 
-/*
-  Calculates how many consecutive days the user has logged at least one activity,
-  counting back from today. Returns 0 if nothing logged today or yesterday.
-*/
 const calculateStreak = (activities) => {
   if (!activities.length) return 0;
 
@@ -81,7 +77,6 @@ const calculateStreak = (activities) => {
   let streak = 0;
   const cursor = new Date();
 
-  /* Walk backwards day by day until we find a gap */
   while (true) {
     const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`;
     if (loggedDays.has(key)) {
@@ -104,7 +99,6 @@ const getDashboard = async (req, res) => {
     const lastWeekStart = startOfWeek(subWeeks(now, 1));
     const lastWeekEnd = endOfWeek(subWeeks(now, 1));
 
-    /* Fetch last 60 days of activity for streak calculation alongside the rest */
     const sixtyDaysAgo = new Date();
     sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
 
