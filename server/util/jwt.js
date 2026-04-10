@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const SECRET = process.env.JWT_SECRET || "change_me_in_production";
+const SECRET = process.env.JWT_SECRET;
 const EXPIRES = process.env.JWT_EXPIRES || "7d";
 
 function signToken(userId) {
