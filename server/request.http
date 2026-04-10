@@ -1,0 +1,9 @@
+### Test server
+GET http://localhost:5000/
+
+### Create entry
+POST http://localhost:5000/test
+Content-Type: application/json
+
+### Get all entries
+GET http://localhost:5000/test
